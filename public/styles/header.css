@@ -1,0 +1,28 @@
+
+header {
+  background-color: #ffc107;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+}
+
+.avatar {
+  display: flex;
+  align-items: flex-start;
+}
+
+.name {
+  color: white;
+}
+
+h2 {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-top: 0;
+}
+
+.lastname {
+  font-weight: 300;
+}
