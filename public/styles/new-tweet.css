@@ -46,20 +46,22 @@ button {
   background-image: none;
   width: 100%;
   border: 2px solid black;
+  border-top: none;
 }
 
 .tweetshead {
   height: 200px;
   border: 2px solid black;
+  border-bottom: none;
 }
 
 div.tweet-log {
   display: flex;
   justify-content: space-between; 
-  align-self: stretch;
+  align-items: center;
   width: 100%;
-  padding: 1em;
-  img
+  padding: .5em;
+  
 }
 
   .tweetarea {
@@ -90,7 +92,7 @@ div.tweet-log {
     }
 
     .articlebox {
-      border: 2px solid black;
+      border: 1px solid black;
     }
 
 
@@ -102,8 +104,17 @@ div.tweet-log {
     padding: 1em;
     }
 
-    .tweetpic {
+    .line {
+      border-top: 3px solid black;
+      position: absolute;
+      left: 7%;
+      right: 7%;
+    }
+
+    .tweetimg {
     width: 60px;
     height: 60px;
+    vertical-align: middle;
+    
     }
 
