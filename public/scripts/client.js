@@ -9,8 +9,7 @@ const data = [
   {
     "user": {
       "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
+      "avatars": "https://i.imgur.com/73hZDYK.png",
       "handle": "@SirIsaac"
     },
     "content": {
@@ -30,8 +29,13 @@ const data = [
   }
 ];
 
+function htmlEncode(str){
+  return String(str).replace(/[^\w. ]/gi, function(c){
+     return '&#'+c.charCodeAt(0)+';';
+  });
+}
+
 const createTweetElement = (tweet) => {
-  console.log(tweet);
   const item = `
 <article class="articlebox">
           <header class="tweetshead">
@@ -42,13 +46,13 @@ const createTweetElement = (tweet) => {
               <span>${tweet.user.handle}</span>  
             </div>
             <div class="tweet-message">
-              <p>${tweet.content.text}</p>
+              <p>${htmlEncode(tweet.content.text)}</p>
             </div>
             <div class="line"></div>
             </header>
           <footer class="tweetsfoot">
             <div class="tweet-log"> 
-              <span>${tweet.created_at}</span>
+              <span>${String(new Date(tweet.created_at))}</span> 
               <span>Icons</span>  
             </div>
             </footer>
@@ -57,23 +61,54 @@ const createTweetElement = (tweet) => {
   return item;
 };
 
+
 const renderTweets = function(tweets) {
+
   // loops through tweets
+  $('#tweets-container').empty();
   for (let element in tweets) {
     // calls createTweetElement for each tweet
     let tempItem = createTweetElement(tweets[element]);
     // takes return value and appends it to the tweets container
-    $('#tweets-container').append(tempItem);
+    $('#tweets-container').prepend(tempItem);
   }
 };
 
-//$('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
-
-// const $tweet = createTweetElement(data);
-//   console.log($tweet);
+const loadTweets = function () {
+    //let array = $.get('/tweets/', function(data, status) {
+  $.ajax({
+    url: '/tweets/',
+    dataType: 'json',
+    type: 'GET',
+  }) 
+    .then(function(response) {
+      renderTweets(response);
+    });
+}
 
 $(document).ready(function() {
-  //console.log($tweet);
-  renderTweets(data);
+  $('.formtweet').on('submit', function(e) {
+    e.preventDefault();
+    let data = $(this).serialize();
+    let text = $(this).find('textarea').val();
+    
+
+    console.log(text);
+    if(text.length > 140 || text.length === 0) {
+      alert(text.length > 140 ? "Your message is too long" : "Your message is empty");
+    } else
+    $.ajax({  
+      type: "POST", 
+      url: "/tweets/",
+      data: data,
+    })
+    .done(function() {
+
+      loadTweets();
+    }).fail(function() {
+      alert("Sorry. Server unavailable")
+    }) 
+  })
+  loadTweets();
 });
