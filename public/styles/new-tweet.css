@@ -55,7 +55,7 @@ button {
   border-bottom: none;
 }
 
-div.tweet-log {
+.tweet-log {
   display: flex;
   justify-content: space-between; 
   align-items: center;
@@ -70,10 +70,10 @@ div.tweet-log {
     border-bottom: 3px solid black;
     }
 
-    #tweet-container:hover {
+    #tweets-container:hover {
     }
 
-    #tweet-container {
+    #tweets-container {
       padding-bottom: 20px;
       padding-top: 30px;
     }
@@ -93,6 +93,7 @@ div.tweet-log {
 
     .articlebox {
       border: 1px solid black;
+      margin-bottom: 20px;
     }
 
 
@@ -117,4 +118,6 @@ div.tweet-log {
     vertical-align: middle;
     
     }
+
+    #tweets-container
 
