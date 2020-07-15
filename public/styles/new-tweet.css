@@ -14,10 +14,63 @@ button {
   display: none;
 }
 
+.counter {
+  font-family: 'Bungee', cursive;
+}
 
+.error {
+  font-family: 'Bungee', cursive;
+  color: red;
+}
 
-  textarea {
+.tweets {
+  color: #545149;
+  background-color: #f4f1ec;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif;
+  background-image: none;
+  width: 100%;
+  border: 2px solid black;
+}
+
+div.tweet-log {
+  display: flex;
+  justify-content: space-between; 
+  align-self: stretch;
+  width: 100%;
+  padding: 1em;
+  img
+}
+
+  .tweetarea {
   width: 100%;    
     border: none;
     border-bottom: 2px solid black;
+    }
+
+    #tweet-container:hover {
+    }
+
+    #tweet-container {
+      padding-bottom: 20px;
+      padding-top: 30px;
+    }
+
+    .articlebox:hover {
+      box-shadow: 5px 10px grey;
+    }
+
+    .tweet-message {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    }
+
+    .tweetpic {
+    
+    width: 60px;
+    height: 60px;
     }
