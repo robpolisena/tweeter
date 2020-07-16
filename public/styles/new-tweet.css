@@ -70,8 +70,7 @@ button {
     border-bottom: 3px solid black;
     }
 
-    #tweets-container:hover {
-    }
+    
 
     #tweets-container {
       padding-bottom: 20px;
@@ -98,11 +97,12 @@ button {
 
 
     .tweet-message {
-    height: 50%;
+    height: 60%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding: 1em;
+    flex-wrap: wrap;
+    padding: .5em;
     }
 
     .line {
@@ -119,5 +119,29 @@ button {
     
     }
 
-    #tweets-container
+    .warning-message,
+    .warning-message2 {
+      display: none;
+    }
+
+
+      .warnimgshow {
+        width: 30px;
+        height: 30px;
+        vertical-align: middle;
+        }
+
+
+      .warntextshow {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: red;
+        font-size: 18px;
+        padding: .5em;;
+        border: 2px solid red;
+      }
+
+     
+
 
