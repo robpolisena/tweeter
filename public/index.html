@@ -59,6 +59,13 @@
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
         <form class="formtweet" action="/tweets/" method="POST">
+          <div class="warning-message">
+            <span class="warntextshow"><img class="warnimgshow" src="/images/alert.png">&nbsp;&nbsp;Your message is too long!&nbsp;&nbsp;Please keep your message at 140 chars or less.&nbsp;&nbsp;<img class="warnimgshow" src="/images/alert.png"></span>
+          </div>
+          <div class="warning-message2">
+            <span class="warntextshow"><img class="warnimgshow" src="/images/alert.png">&nbsp;&nbsp;Your message is empty!&nbsp;&nbsp;Please type in a message. &nbsp;&nbsp;<img class="warnimgshow" src="/images/alert.png"></span>
+          </div>
+
           <label class= "hidden" for="tweet-text">What are you humming about?</label>
           <textarea class="tweetarea" name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
           <div class="tweet">
