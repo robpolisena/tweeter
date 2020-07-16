@@ -35,6 +35,10 @@ function htmlEncode(str){
   });
 }
 
+function slide() {
+  $('#warntexthide').slideUp();
+}
+
 const createTweetElement = (tweet) => {
   const item = `
 <article class="articlebox">
@@ -92,23 +96,24 @@ $(document).ready(function() {
     e.preventDefault();
     let data = $(this).serialize();
     let text = $(this).find('textarea').val();
-    
-
-    console.log(text);
-    if(text.length > 140 || text.length === 0) {
-      alert(text.length > 140 ? "Your message is too long" : "Your message is empty");
-    } else
+    const $parent = $(this).closest('form');
+    if(text.length > 140) {
+      $(".warning-message").slideDown();
+      } else if (text.length === 0){
+        $(".warning-message2").slideDown();
+      } else {
+      $('.warning-message').slideUp();
+      $(".warning-message2").slideUp();
     $.ajax({  
       type: "POST", 
       url: "/tweets/",
       data: data,
     })
     .done(function() {
-
       loadTweets();
     }).fail(function() {
       alert("Sorry. Server unavailable")
     }) 
-  })
+}})
   loadTweets();
 });
