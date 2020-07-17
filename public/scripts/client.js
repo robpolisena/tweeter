@@ -1,10 +1,6 @@
 /*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Test / driver code (temporary). Eventually will get this from the server.
 const data = [
   {
     "user": {
@@ -29,16 +25,14 @@ const data = [
   }
 ];
 
-function htmlEncode(str){
-  return String(str).replace(/[^\w. ]/gi, function(c){
-     return '&#'+c.charCodeAt(0)+';';
+// prevent XSS client-side in JavaScript
+function htmlEncode(str) {
+  return String(str).replace(/[^\w. ]/gi, function(c) {
+    return '&#' + c.charCodeAt(0) + ';';
   });
 }
 
-function slide() {
-  $('#warntexthide').slideUp();
-}
-
+// this function formats the tweet element for display in browser
 const createTweetElement = (tweet) => {
   const item = `
 <article class="articlebox">
@@ -57,7 +51,7 @@ const createTweetElement = (tweet) => {
           <footer class="tweetsfoot">
             <div class="tweet-log"> 
               <span>${String(new Date(tweet.created_at))}</span> 
-              <span>Icons</span>  
+              <span><img class="iconimg" src="images/flagicon.jpg"><img class="iconimg" src="images/retweet.png"><img class="iconimg" src="images/like.png"></img></span>  
             </div>
             </footer>
         </article>
@@ -67,7 +61,6 @@ const createTweetElement = (tweet) => {
 
 
 const renderTweets = function(tweets) {
-
   // loops through tweets
   $('#tweets-container').empty();
   for (let element in tweets) {
@@ -79,41 +72,47 @@ const renderTweets = function(tweets) {
 };
 
 
-const loadTweets = function () {
-    //let array = $.get('/tweets/', function(data, status) {
+// obtains the new inputed tweet and passes to render tweets
+const loadTweets = function() {
   $.ajax({
     url: '/tweets/',
     dataType: 'json',
     type: 'GET',
-  }) 
+  })
     .then(function(response) {
       renderTweets(response);
     });
-}
+};
 
+// once DOM is ready excute
 $(document).ready(function() {
   $('.formtweet').on('submit', function(e) {
     e.preventDefault();
+    // input data converted to query string for AJAX POST
     let data = $(this).serialize();
+    // input captured as actual characters for length count
     let text = $(this).find('textarea').val();
-    const $parent = $(this).closest('form');
-    if(text.length > 140) {
+    //const $parent = $(this).closest('form');
+    // condition for validation on tweet input
+    if (text.length > 140) {
       $(".warning-message").slideDown();
-      } else if (text.length === 0){
-        $(".warning-message2").slideDown();
-      } else {
+    } else if (text.length === 0) {
+      $(".warning-message2").slideDown();
+    } else {
       $('.warning-message').slideUp();
       $(".warning-message2").slideUp();
-    $.ajax({  
-      type: "POST", 
-      url: "/tweets/",
-      data: data,
-    })
-    .done(function() {
-      loadTweets();
-    }).fail(function() {
-      alert("Sorry. Server unavailable")
-    }) 
-}})
+      $.ajax({
+        type: "POST",
+        url: "/tweets/",
+        data: data,
+      })
+        .done(function() {
+          // sending the result from text input to loadtweets function
+          loadTweets();
+        }).fail(function() {
+          alert("Sorry. Server unavailable");
+        });
+    }
+  });
   loadTweets();
 });
