@@ -25,9 +25,13 @@ main {
     background-color: #f4f1ec;
     width: 90%;
     margin: 0 auto;
-    
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+/* Tablet Styles and desktop */
+@media only screen and (min-width: 768px) {
+    .navtweetcontain {
+      display: flex;
+      flex-direction: row;
+      background-color: #f4f1ec;
+    }
+}
