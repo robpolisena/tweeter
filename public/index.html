@@ -32,17 +32,17 @@
     <!-- Count JS -->
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
-
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
       <span>tweeter</span>
-      <span class="write"><strong>Write</strong>&nbsp;a new tweet</span>
+      <span class="write"><strong>Write</strong>&nbsp;a new tweet<img class="downarrow" src="/images/arrowdown.gif"></span>
+      
     </nav>
-
-    <header class="navhead">
+    <div class="navtweetcontain">
+    <div class="navhead">
       <div class="avatar">
           <img src="/images/profile-hex.png"> 
       </div>
@@ -52,12 +52,12 @@
             <span class="lastname">Polisena</span>
           </h2>
       </div>
-  </header>
+    </div>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
+        
         <form class="formtweet" action="/tweets/" method="POST">
           <div class="warning-message">
             <span class="warntextshow"><img class="warnimgshow" src="/images/alert.png">&nbsp;&nbsp;Your message is too long!&nbsp;&nbsp;Please keep your message at 140 chars or less.&nbsp;&nbsp;<img class="warnimgshow" src="/images/alert.png"></span>
@@ -65,7 +65,6 @@
           <div class="warning-message2">
             <span class="warntextshow"><img class="warnimgshow" src="/images/alert.png">&nbsp;&nbsp;Your message is empty!&nbsp;&nbsp;Please type in a message. &nbsp;&nbsp;<img class="warnimgshow" src="/images/alert.png"></span>
           </div>
-
           <label class= "hidden" for="tweet-text">What are you humming about?</label>
           <textarea class="tweetarea" name="text" placeholder="What are you humming about?" id="tweet-text"></textarea>
           <div class="tweet">
@@ -92,11 +91,12 @@
           <footer class="tweetsfoot">
             <div class="tweet-log"> 
               <span>10 days ago</span>
-              <span>Icons</span>  
+              <span><img class="iconimg" src="images/flagicon.jpg"><img class="iconimg" src="images/retweet.png"><img class="iconimg" src="images/like.png"></img></span>  
             </div>
           </footer>
         </article>
       </section>
     </main>
+  </div>
   </body>
 </html>
