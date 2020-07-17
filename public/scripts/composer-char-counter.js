@@ -1,3 +1,4 @@
+// calculates character count from user input
 $(document).ready(function() {
   $('#tweet-text').on('input', function(event) {
     let num = 140;
@@ -11,6 +12,5 @@ $(document).ready(function() {
     } else {
       $keyleft.removeClass('error');
     }
-
   });
 });
