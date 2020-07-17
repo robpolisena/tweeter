@@ -15,3 +15,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Screentshot of tweet compose box"](https://github.com/robpolisena/tweeter/blob/master/docs/Screenshot%20of%20Tweets.png?raw=true)
+!["Screentshot of error messgae"](https://github.com/robpolisena/tweeter/blob/master/docs/user-error.png?raw=true)
+!["Screentshot of error messgae"](https://github.com/robpolisena/tweeter/blob/master/docs/error-with-long-message.png?raw=true)
