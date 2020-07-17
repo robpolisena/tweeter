@@ -1,19 +1,9 @@
-.tweetarea {
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-}
+/* new-tweet.css */
 
 .tweet {
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
-
-}
-
-.tweetshead {
-  height: 300px;
-
 }
 
 button {
@@ -41,7 +31,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Source Sans Pro', sans-serif;
   background-image: none;
   width: 100%;
@@ -61,22 +51,46 @@ button {
   align-items: center;
   width: 100%;
   padding: .5em;
-  
 }
 
+.tweetarea {
+  width: 100%;    
+  border: none;
+  border-bottom: 3px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.new-tweet {
+  padding-top: 10px;
+}
+
+#tweets-container {
+  padding-bottom: 20px;
+  padding-top: 30px;
+  padding-right: 20px;
+}
+
+/* Tablet Styles and Desktop */
+@media only screen and (min-width: 768px) {
   .tweetarea {
-   width: 100%;    
-    border: none;
-    border-bottom: 3px solid black;
-    }
-
-    
-
-    #tweets-container {
-      padding-bottom: 20px;
-      padding-top: 30px;
-    }
-
+    padding-top: 15px;
+    width: 90%;
+  }
+  .new-tweet {
+    padding-top: 140px;
+    padding-right: 25px;
+  }
+  #tweets-container {
+    width: 90%;
+  }
+  .tweet {
+    width: 90%;
+  }
+}
     
     .articlebox:hover {
       box-shadow: 10px 5px 5px grey;
@@ -95,7 +109,6 @@ button {
       margin-bottom: 20px;
     }
 
-
     .tweet-message {
     height: 60%;
     display: flex;
@@ -108,40 +121,59 @@ button {
     .line {
       border-top: 3px solid black;
       position: absolute;
-      left: 7%;
-      right: 7%;
+      left: 9%;
+      right: 11%;
     }
 
-    .tweetimg {
-    width: 60px;
-    height: 60px;
-    vertical-align: middle;
     
+    .tweetimg {
+      width: 60px;
+      height: 60px;
+      vertical-align: middle;
+      
     }
-
+    
     .warning-message,
     .warning-message2 {
       display: none;
     }
-
-
-      .warnimgshow {
-        width: 30px;
-        height: 30px;
-        vertical-align: middle;
-        }
-
-
-      .warntextshow {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: red;
-        font-size: 18px;
-        padding: .5em;;
-        border: 2px solid red;
+    
+    
+    .warnimgshow {
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+    }
+    
+    
+    .warntextshow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: red;
+      font-size: 18px;
+      padding: .5em;;
+      border: 2px solid red;
+    }
+    
+    .iconimg {
+      width: 25px;
+      height: 25px;
+    }
+    
+    /* Tablet Styles and Desktop*/
+  @media only screen and (min-width: 768px) {
+  .line {
+  position: relative; 
+  left: 1%;
+  right: 1%;
+  
+  }
+  .warntextshow {
+    width: 90%;  
       }
-
-     
-
-
+}
+    
+    
+    
+    
