@@ -1,5 +1,4 @@
-/*
- */
+/* client.js */
 
 const data = [
   {
@@ -26,14 +25,25 @@ const data = [
 ];
 
 // prevent XSS client-side in JavaScript
-function htmlEncode(str) {
+const htmlEncode = function(str) {
+//function htmlEncode(str) {
   return String(str).replace(/[^\w. ]/gi, function(c) {
     return '&#' + c.charCodeAt(0) + ';';
   });
-}
+};
+
 
 // this function formats the tweet element for display in browser
 const createTweetElement = (tweet) => {
+ 
+  // calcuate various time intervals
+  const z = new Date() - new Date(tweet.created_at);
+  const day = Math.round(z / (1000 * 3600 * 24));
+  const hour = Math.round(z / 360000);
+  const minute = Math.round(z / 60000);
+  const second = Math.round(z / 1000);
+  const final = day > 1 ? day + " days ago" : hour > 1 && hour < 24 ? hour + " hours ago" : minute > 1 && minute < 60 ? minute + " minutes ago" : second > 1 && second < 60 ? second + " seconds ago" : second + " second ago";
+  
   const item = `
 <article class="articlebox">
           <header class="tweetshead">
@@ -50,13 +60,20 @@ const createTweetElement = (tweet) => {
             </header>
           <footer class="tweetsfoot">
             <div class="tweet-log"> 
-              <span>${String(new Date(tweet.created_at))}</span> 
+              <span>${final}</span> 
               <span><img class="iconimg" src="images/flagicon.jpg"><img class="iconimg" src="images/retweet.png"><img class="iconimg" src="images/like.png"></img></span>  
             </div>
             </footer>
         </article>
   `;
   return item;
+};
+
+// function to clear text area and reset counter to 140 after submit
+const clearTextArea = function() {
+  const num = 140;
+  document.getElementById("tweet-text").value = '';
+  $('.counter').text(num);
 };
 
 
@@ -84,7 +101,6 @@ const loadTweets = function() {
     });
 };
 
-// once DOM is ready excute
 $(document).ready(function() {
   $('.formtweet').on('submit', function(e) {
     e.preventDefault();
@@ -96,8 +112,10 @@ $(document).ready(function() {
     // condition for validation on tweet input
     if (text.length > 140) {
       $(".warning-message").slideDown();
+      $(".warning-message2").slideUp();
     } else if (text.length === 0) {
       $(".warning-message2").slideDown();
+      $('.warning-message').slideUp();
     } else {
       $('.warning-message').slideUp();
       $(".warning-message2").slideUp();
@@ -109,6 +127,8 @@ $(document).ready(function() {
         .done(function() {
           // sending the result from text input to loadtweets function
           loadTweets();
+          clearTextArea();
+
         }).fail(function() {
           alert("Sorry. Server unavailable");
         });
